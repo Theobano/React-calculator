@@ -1,3 +1,8 @@
+# Description
+- This project is a simple calculator built with React.js. 
+- It allows input via a physical keyboard or with the keypad available in the app. 
+- It has both a dark an light mode which is set according to the browser preference.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
