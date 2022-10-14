@@ -1,38 +1,153 @@
+:root {
+  --background-color: hsl(0, 0%, 90%);
+  --text-color: black;
+  --shadow-color: hsl(0, 0%, 50%);
+  --screen-focus-color: hsl(0, 0%, 70%);
+  --keypad-gradient-color-start: hsl(0, 0%, 80%);
+  --keypad-gradient-color-end: hsl(0, 0%, 90%);
+}
+
+.dark-mode {
+  --background-color: hsl(0, 0%, 10%);
+  --text-color: white;
+  --shadow-color: hsl(0, 0%, 50%);
+  --screen-focus-color: hsl(0, 0%, 30%);
+  --keypad-gradient-color-start: hsl(0, 0%, 15%);
+  --keypad-gradient-color-end: hsl(0, 0%, 10%);
+}
+
+body {
+  background-color: var(--background-color);
+}
+
 .App {
-  text-align: center;
+  padding: 2em;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.center {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+#calculator {
+  flex: 1fr;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 2.5fr 7.5fr;
+  width: 375px;
+  box-shadow: 1px 1px 5px 1px var(--shadow-color);
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#screen {
+  background-color: var(--background-color);
+  padding: 1em 1em 1em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+#screen:focus,
+#screen:focus-visible {
+  outline: none;
+
+  border-radius: 20px 20px 0px 0px;
+  border: 1px solid var(--screen-focus-color);
+}
+
+#input {
+  flex: 1fr;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: flex-end;
+  padding: 0;
+  border: none;
+  font-size: 2.5em;
+  color: var(--text-color);
+}
+
+#screen input:focus-visible {
+  outline: none;
+}
+
+#input-history {
+  flex: 1fr;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-align: right;
+  flex-flow: nowrap;
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+#keypad {
+  background-image: linear-gradient(
+    -45deg,
+    var(--keypad-gradient-color-start),
+    var(--keypad-gradient-color-end)
+  );
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  color: var(--text-color);
+
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid var(--screen-focus-color);
+  border-right: 1px solid var(--screen-focus-color);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  font-size: large;
+  background: none;
+}
+.button:nth-last-child(-n + 4) {
+  border-bottom: none;
+}
+.button:nth-last-child(-4n + 21) {
+  border-right: none;
+}
+.button:hover {
+  background-color: var(--screen-focus-color);
+}
+
+@media only screen and (max-height: 1041px) {
+  #calculator {
+    height: 100%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media only screen and (max-width: 426px) {
+  body,
+  .App {
+    padding: 0;
+  }
+
+  #calculator {
+    width: 100%;
+    height: 100%;
   }
 }
