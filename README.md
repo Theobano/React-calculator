@@ -2,7 +2,7 @@
 - This project is a simple calculator built with React.js. 
 - It allows input via a physical keyboard or with the keypad available in the app. 
 - It has both a dark an light mode which is set according to the browser preference.
-It was designed to be responsive across different screen sizes.
+- It was designed to be responsive across different screen sizes.
 
 # Getting Started with Create React App
 
